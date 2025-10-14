@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+
+# Streamlit
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Large files
+*.csv.gz
+*.zip
+*.tar.gz
+
+# Temporary files
+*.log
+*.tmp
+.cache/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Output files
+output/
+results/
+*.png
+*.jpg
+*.pdf
+
+# Keep specific files
+!synthetic_fake_news_demo.csv
+!sample_data.csv
+!sample_labeled_data.csv
+
