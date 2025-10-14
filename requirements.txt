@@ -1,6 +1,8 @@
-   streamlit
+     streamlit
    pandas
    numpy
    sentence-transformers
    scikit-learn
    plotly
+   matplotlib
+
