@@ -349,14 +349,16 @@ with st.spinner("Loading SBERT model..."):
     model = load_sbert_model()
 
 # Prepare texts for embedding
-   # Prepare texts for embedding
-   # Clean and handle missing values
-   df['title'] = df['title'].fillna('').astype(str)
-   df['text'] = df['text'].fillna('').astype(str)
-   df['combined_text'] = df['title'] + ". " + df['text'].str[:200]
-   
-   # Remove any empty texts
-   df = df[df['combined_text'].str.strip() != ''].reset_index(drop=True)
+# Clean and handle missing values
+df['title'] = df['title'].fillna('').astype(str)
+df['text'] = df['text'].fillna('').astype(str)
+df['combined_text'] = df['title'] + ". " + df['text'].str[:200]
+
+# Remove any empty texts
+df = df[df['combined_text'].str.strip() != ''].reset_index(drop=True)
+
+with st.spinner(f"Computing embeddings for {len(df)} items..."):
+    item_embeddings = compute_embeddings(df['combined_text'].tolist(), model)
     
     # Compute group embeddings
     group_low_emb = compute_embeddings([group_low_desc], model)[0]
@@ -366,7 +368,6 @@ with st.spinner("Loading SBERT model..."):
     user_emb = compute_embeddings([user_profile_text], model)[0]
 
 st.success("✅ Embeddings computed!")
-
 # Show 5-row SD example table
 st.markdown("#### 📊 5-Row SD Calculation Example (Low Divergence Context)")
 example_indices = list(range(min(5, len(df))))
@@ -969,5 +970,6 @@ st.success(f"✅ Results ready for export! {len(df_export)} rows with comprehens
 
 st.markdown("---")
 st.markdown("**Social Curiosity Recommender System** | Bobby's Master Thesis | Built with Streamlit")
+
 
 
