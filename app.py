@@ -349,10 +349,14 @@ with st.spinner("Loading SBERT model..."):
     model = load_sbert_model()
 
 # Prepare texts for embedding
-df['combined_text'] = df['title'] + ". " + df['text'].str[:200]
-
-with st.spinner(f"Computing embeddings for {len(df)} items..."):
-    item_embeddings = compute_embeddings(df['combined_text'].tolist(), model)
+   # Prepare texts for embedding
+   # Clean and handle missing values
+   df['title'] = df['title'].fillna('').astype(str)
+   df['text'] = df['text'].fillna('').astype(str)
+   df['combined_text'] = df['title'] + ". " + df['text'].str[:200]
+   
+   # Remove any empty texts
+   df = df[df['combined_text'].str.strip() != ''].reset_index(drop=True)
     
     # Compute group embeddings
     group_low_emb = compute_embeddings([group_low_desc], model)[0]
@@ -965,4 +969,5 @@ st.success(f"✅ Results ready for export! {len(df_export)} rows with comprehens
 
 st.markdown("---")
 st.markdown("**Social Curiosity Recommender System** | Bobby's Master Thesis | Built with Streamlit")
+
 
