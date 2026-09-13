@@ -26,6 +26,17 @@ For content-platform and analytics teams, the prototype demonstrates how to insp
 - Calculates component-ablation metrics in labeled mode.
 - Exports results and configuration metadata to CSV.
 
+
+## See the output
+
+These screenshots are taken from the thesis application's Streamlit views. They show the kinds of ranking comparisons and sensitivity analysis the app produces; they are illustrative research outputs, not a live hosted demo.
+
+![Recommendation results comparing low- and high-divergence contexts](assets/recommendation-results.jpg)
+
+![Alpha sensitivity and ranking output](assets/alpha-analysis.jpg)
+
+To try the workflow yourself, run the app locally and upload the included `synthetic_fake_news_demo.csv`. The small dataset is intentionally separate from the 44,898-article thesis evaluation.
+
 ## Method
 
 The pipeline is data preparation, semantic embeddings, profile comparison, divergence scoring, ranking and visual evaluation.
